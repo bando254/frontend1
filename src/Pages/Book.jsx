@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../style/Book.css';
+import '../style/book.css';
 
 const Book = () => {
   const [formData, setFormData] = useState({
