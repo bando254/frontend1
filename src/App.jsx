@@ -10,6 +10,7 @@ import Book from './Pages/Book';
 import Contact from './Pages/Contact';
 import Live from './Pages/live';
 import Footer from './Components/Footer';
+import Skills from './Pages/Skills';
 
 import './App.css';
 
