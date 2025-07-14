@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import "../style/Live.css";
+import "../style/live.css";
 
 const Live = () => {
   const localVideoRef = useRef();
