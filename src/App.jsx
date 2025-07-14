@@ -8,7 +8,7 @@ import Gallery from './Pages/Gallery';
 import Blog from './Pages/Blog';
 import Book from './Pages/Book';
 import Contact from './Pages/Contact';
-import Live from './Pages/live';
+import Live from './Pages/Live';
 import Footer from './Components/Footer';
 import Skills from './Pages/Skills';
 
