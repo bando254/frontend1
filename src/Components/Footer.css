@@ -1,0 +1,39 @@
+.footer {
+  background-color: #111;
+  color: #fff;
+  padding: 20px 10px; /* Reduced padding */
+  text-align: center;
+  border-top: 1px solid #333;
+  font-size: 0.85rem;
+}
+
+.footer-brand h2 {
+  font-size: 1.2rem; /* Smaller brand title */
+  color: #ffc300;
+  margin: 4px 0;
+  font-weight: bold;
+}
+
+.footer-brand p {
+  font-size: 0.85rem;
+  color: #ccc;
+  margin: 4px 0 10px;
+}
+
+.footer-bottom p {
+  font-size: 0.75rem;
+  color: #888;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .footer-brand h2 {
+    font-size: 1rem;
+  }
+
+  .footer-brand p,
+  .footer-bottom p {
+    font-size: 0.75rem;
+  }
+}

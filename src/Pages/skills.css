@@ -1,0 +1,28 @@
+.skills-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically */
+  padding: 60px 30px;
+  min-height: 100vh;
+  color: #fff;
+  text-align: center;
+  background-image: url('https://raw.githubusercontent.com/bando254/my-portfolio/bba7427db8ad118902789a038a376f9486f2d239/lorin-both-ofWmPiCYELQ-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+.skills-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(14, 14, 14, 0.85); /* Dark overlay */
+  z-index: -1;
+}

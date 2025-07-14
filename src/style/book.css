@@ -1,0 +1,106 @@
+/* Book.css */
+
+.book-container {
+  background: url('https://raw.githubusercontent.com/bando254/my-portfolio/main/jan-canty-2GVxkpsUOvM-unsplash.jpg') no-repeat center center/cover;
+  color: #ffffff;
+  padding: 60px 60px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Dark overlay */
+.book-container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(11, 11, 11, 0.8); /* dark overlay */
+  z-index: 0;
+}
+
+.book-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.book-title {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #ffcc00;
+  font-weight: 700;
+  text-align: center;
+}
+
+.book-description {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  text-align: center;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.book-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.book-form input,
+.book-form select,
+.book-form textarea {
+  padding: 14px 18px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.book-form input:focus,
+.book-form select:focus,
+.book-form textarea:focus {
+  outline: none;
+  background-color: #2a2a2a;
+  box-shadow: 0 0 0 2px #ffcc00;
+}
+
+.book-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.book-form button {
+  background-color: #ffcc00;
+  color: #0b0b0b;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.book-form button:hover {
+  background-color: #e6b800;
+}
+
+/* Booking status message */
+.book-status {
+  margin-top: 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #00ff88; /* green for success */
+  text-align: center;
+}
+
+.book-status.error {
+  color: #ff4d4d; /* red for error */
+}
