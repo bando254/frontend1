@@ -1,24 +1,34 @@
 .live-chat {
-    background-color: #0a0a0a;
-    color: white;
-    padding: 40px;
-    text-align: center;
-    min-height: 100vh;
-  }
-  
-  .video-wrapper {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-  }
-  
+  background-color: #0a0a0a;
+  color: white;
+  padding: 40px;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.video {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 16 / 9;
+  background-color: #000;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #000;
+  object-fit: cover;
+}
+
+/* Optional: Mobile responsive */
+@media (max-width: 600px) {
   .video {
-    width: 300px;
-    height: 220px;
-    background-color: black;
-    border-radius: 10px;
-    box-shadow: 0 0 20px #000;
+    max-width: 100%;
+    width: 100%;
   }
-  
+}
