@@ -13,7 +13,8 @@ const Live = () => {
       localVideoRef.current.srcObject = stream;
 
       // 2. Connect to signaling server
-      socketRef.current = new WebSocket("ws://localhost:8000");
+      //socketRef.current = new WebSocket("ws://localhost:8000");
+       socketRef.current = new WebSocket("ws://localhost:5000");
 
       socketRef.current.onopen = () => {
         console.log("Connected to WebSocket");
