@@ -9,12 +9,11 @@ const Live = () => {
   const [cameraStatus, setCameraStatus] = useState("Checking camera...");
 
   useEffect(() => {
-    // 1. Get camera with better error handling
     const getMedia = async () => {
       try {
         console.log("Attempting to access camera...");
         setCameraStatus("Accessing camera...");
-        
+
         const stream = await navigator.mediaDevices.getUserMedia({
           video: {
             width: { ideal: 1280 },
@@ -26,44 +25,40 @@ const Live = () => {
 
         console.log("Successfully got media stream:", stream);
         setCameraStatus("Camera active");
-        
+
         if (localVideoRef.current) {
-          console.log("Setting stream to video element");
           localVideoRef.current.srcObject = stream;
-          
-          // Check if video is actually playing
+
           localVideoRef.current.onloadedmetadata = () => {
             console.log("Video metadata loaded");
           };
-          
+
           localVideoRef.current.onplay = () => {
             console.log("Video is playing");
             setCameraStatus("Camera working");
           };
         }
 
-        // 2. Connect to signaling server
         setupWebSocket(stream);
-
       } catch (err) {
         console.error("❌ Camera/microphone access failed:", err);
         setCameraStatus(`Error: ${err.message}`);
-        
-        // Specific error handling
+
         if (err.name === "NotFoundError" || err.name === "DevicesNotFoundError") {
-          console.error("Camera not found. Check if camera is connected.");
+          console.error("Camera not found.");
         } else if (err.name === "NotReadableError") {
-          console.error("Camera is already in use by another application.");
+          console.error("Camera is already in use.");
         } else if (err.name === "NotAllowedError" || err.name === "PermissionDeniedError") {
-          console.error("Permissions denied. Please allow camera access.");
+          console.error("Permissions denied.");
         } else if (err.name === "OverconstrainedError") {
-          console.error("Constraints could not be satisfied. Try different settings.");
+          console.error("Constraints not satisfied.");
         }
       }
     };
 
     const setupWebSocket = (stream) => {
-      socketRef.current = new WebSocket("ws://localhost:5000");
+      // ✅ Use secure WebSocket for ngrok
+      socketRef.current = new WebSocket("wss://6ee3030bb118.ngrok-free.app");
 
       socketRef.current.onopen = () => {
         console.log("✅ Connected to WebSocket");
@@ -101,7 +96,6 @@ const Live = () => {
         iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
       });
 
-      // Add error handlers for peer connection
       peerRef.current.onicecandidateerror = (err) => {
         console.error("ICE candidate error:", err);
       };
@@ -158,14 +152,9 @@ const Live = () => {
 
     getMedia();
 
-    // Cleanup function
     return () => {
-      if (peerRef.current) {
-        peerRef.current.close();
-      }
-      if (socketRef.current) {
-        socketRef.current.close();
-      }
+      if (peerRef.current) peerRef.current.close();
+      if (socketRef.current) socketRef.current.close();
       if (localVideoRef.current && localVideoRef.current.srcObject) {
         localVideoRef.current.srcObject.getTracks().forEach(track => track.stop());
       }
